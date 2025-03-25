@@ -1,0 +1,21 @@
+# **Scope statement:**
+- What is inside scope:
+    - Create a game where the player controls a snake
+    - The snake will have Adam's head
+    - Implement loss conditions
+  - Game ends when
+	  - snake runs into itself
+	  - snake runs into wall
+  - The snake will grow when it eats
+  - The snake's body will follow the path of it's head
+  - Possibly make adam’s head flop like a south park Canadians head when it eats (time allowing)
+  - Game will keep score
+  - Snake will be unable to move backwards
+  - Only accepts: W, A, S, D, L-arrow, R-arrow, U-arrow, D-arrow
+  - It eats (possibilities):
+    - Homework
+    - Tests
+    - Apples
+    - Lines of code
+- What is outside scope / unnecessary:
+  - High score table
