@@ -11,7 +11,7 @@ We need to develop a UNK-themed game to satisfy the vast expanse of boredom acro
 
 **iii. Design:** Design a framework for the basic requirements and structures that will be needed for proper function in development
 
-**iv. Programming:** Program the game, churning out iterations to be updated and built upon
+**iv. Programming:** Program the game, churning out iterations to be revised and built upon
 
 **v. Closure:** Ensure that the game is properly functional and document and review the results
 <br>
