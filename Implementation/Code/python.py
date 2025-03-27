@@ -9,10 +9,11 @@ class Python:
     __curr_direction = "ERR"
     __curr_score = -1
     __head_pos = -1
-    # This list will contain a list of vectors to draw from using pygame.math.Vector2()
-    # (in hindsight a 3-dimensional list would've made more sense)
+    # This list will contain a list of vectors to draw from using pygame.math.Vector2(), which stores an x and y value
+    # individual X or Y value can be called with [variable].x or [variable].y
     __pos_list = [None]
 
+    # initializes class once created
     def __init__(self):
         self.set_length(1)
         self.set_curr_direction("right")
@@ -21,6 +22,8 @@ class Python:
         self.set_head_pos(pygame.math.Vector2(480, 360))
 
     # helpers
+
+    # changes position of head depending on the state of __curr_direction
     def change_head_pos(self):
         print(self.get_curr_direction())
         match self.get_curr_direction():
@@ -32,8 +35,8 @@ class Python:
                 self.set_head_pos(pygame.math.Vector2(self.get_head_pos().x + 5, self.get_head_pos().y))
             case "left":
                 self.set_head_pos(pygame.math.Vector2(self.get_head_pos().x - 5, self.get_head_pos().y))
+        # updates variable
         lst_change = self.get_pos_list()
-
         lst_change[0] = self.get_head_pos()
         self.set_pos_list(lst_change)
 

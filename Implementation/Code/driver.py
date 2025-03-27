@@ -7,14 +7,20 @@ from python import Python
 
 def main():
     running = True
+    # initializes pygame, a clock (for frame rate/anything else we might need it for later, and the snake object
     screen, clock, snake = initialize()
 
+    # This loop runs through different functions until the user closes the window
     while running:
+        # sets frame rate
         clock.tick(60)
+        # calls render function to render screen
         render(screen, snake)
+        # checks input
         snake = key_input(snake)
-        print(snake.get_curr_direction())
+        # calls the function from the python class that changes the position of the snakes head
         snake.change_head_pos()
+        # Allows "X" button on window to be pressed
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
@@ -33,23 +39,28 @@ def initialize():
 
 
 def render(screen, snake):
+    # var for rectangle size
     rect_size = 50
     # This fills the background, so the previous image does not stay on screen
     screen.fill("white")
 
     # render snake here
     for length in range(len(snake.get_pos_list())):
+        # uses draw.rect() which is formatted  as (display being drawn on, color,
+        #                                         rect(x position, y position, width, length)
         pygame.draw.rect(screen, "green", rect=(snake.get_pos_list()[length].x, snake.get_pos_list()[length].y,
                                                 rect_size, rect_size))
 
-    # renders display
+    # renders display, end of function
     pygame.display.flip()
 
 
 
 def key_input(snake):
+    # this creates a list of booleans depending on what keys are being pressed
     keys = pygame.key.get_pressed()
-    # sets the direction the snake is currently headed, which changes position in main loop
+    # check keys being pressed, and changes current direction depending on the key being pressed
+    # pygame.K_CHARACTER references the point in the list referencing that character
     if keys[pygame.K_UP]:
         snake.set_curr_direction("up")
 
