@@ -4,7 +4,7 @@ Implement player controlled snake
 
 **deadline:** 3/28, Friday
 
-**Requirments:** 
+**Requirments/Security Requirment:** 
 
 **Task:** "Snake" that can be controlled by the player
 
