@@ -1,4 +1,4 @@
-## MIlestone One
+## Milestone One
 
 Implement player controlled snake
 
