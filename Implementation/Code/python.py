@@ -40,7 +40,6 @@ class Python:
         lst_change[0] = self.get_head_pos()
         self.set_pos_list(lst_change)
 
-
     # getters
     def get_length(self):
         return self.__length

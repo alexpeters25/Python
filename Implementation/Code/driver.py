@@ -81,7 +81,7 @@ def key_input(snake):
 def border(snake):
     if snake.get_pos_list()[0][0] <= 10 or snake.get_pos_list()[0][0] >= 910:
         snake.set_curr_direction("stop")
-    elif snake.get_pos_list()[0][1] <= 10 or snake.get_pos_list()[0][1] >= 600:
+    elif snake.get_pos_list()[0][1] <= 10 or snake.get_pos_list()[0][1] >= 660:
         snake.set_curr_direction("stop")
 
     return snake
