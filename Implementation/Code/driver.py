@@ -10,7 +10,7 @@ from food import Food
 def main():
     running = True
     # initializes pygame, a clock (for frame rate/anything else we might need it for later, and the snake object
-    screen, clock, snake = initialize()
+    screen, clock, snake, food = initialize()
     # used to ensure movement only occurs every 100 ms (subject to change)
     movement_timer = time.time()
 
