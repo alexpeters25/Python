@@ -4,20 +4,22 @@
 import pygame
 import time
 from python import Python
+from food import Food
 
 
 def main():
     running = True
     # initializes pygame, a clock (for frame rate/anything else we might need it for later, and the snake object
-    screen, clock, snake = initialize()
+    screen, clock, snake, food = initialize()
     # used to ensure movement only occurs every 100 ms (subject to change)
     movement_timer = time.time()
+
     # This loop runs through different functions until the user closes the window
     while running:
         # sets frame rate
         clock.tick(60)
         # calls render function to render screen
-        render(screen, snake)
+        render(screen, snake, food)
         # checks input
         snake = key_input(snake)
         # border function set up where if the snake head touches it, the game quits running
@@ -30,6 +32,8 @@ def main():
             snake.change_head_pos()
             movement_timer = time.time()
         # Allows "X" button on window to be pressed
+
+        # Need a coordinate system so that fruit placement can be randomized
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
@@ -43,12 +47,15 @@ def initialize():
     snake = Python()
     display = pygame.display.set_mode(size=(960, 720))
     clock = pygame.time.Clock()
-    return display, clock, snake
+    food = Food()
+    return display, clock, snake, food
 
 
-def render(screen, snake):
+def render(screen, snake, food):
     # var for rectangle size
     rect_size = 20
+    food_size = 15
+
     # This fills the background, so the previous image does not stay on screen
     screen.fill("white")
 
@@ -59,6 +66,7 @@ def render(screen, snake):
         pygame.draw.rect(screen, "green", rect=(snake.get_pos_list()[length].x, snake.get_pos_list()[length].y,
                                                 rect_size, rect_size))
 
+    pygame.draw.circle(screen, "red", (food.get_curr_pos().x, food.get_curr_pos().y), food_size)
     # renders display, end of function
     pygame.display.flip()
 
@@ -91,6 +99,11 @@ def border(snake):
 
     return snake
 
+# Need a function to generate the head?
+'''
+def adam_head():
+    # head = pygame.image.load("spanieram.jpg").convert_alpha()
+'''
 
 if __name__ == "__main__":
     main()
