@@ -2,6 +2,7 @@
 # All code surrounding pygame heavily references pygame documentation
 # Milestone One: "Snake" that can be controlled by the player
 import pygame
+import time
 from python import Python
 from food import Food
 
@@ -9,7 +10,9 @@ from food import Food
 def main():
     running = True
     # initializes pygame, a clock (for frame rate/anything else we might need it for later, and the snake object
-    screen, clock, snake, food = initialize()
+    screen, clock, snake = initialize()
+    # used to ensure movement only occurs every 100 ms (subject to change)
+    movement_timer = time.time()
 
     # This loop runs through different functions until the user closes the window
     while running:
@@ -24,7 +27,10 @@ def main():
         if snake.get_curr_direction() == "stop":
             running = False
         # calls the function from the python class that changes the position of the snakes head
-        snake.change_head_pos()
+        # if statement triggers every 100 ms and resets timer
+        if movement_timer - time.time() < -0.1:
+            snake.change_head_pos()
+            movement_timer = time.time()
         # Allows "X" button on window to be pressed
 
         # Need a coordinate system so that fruit placement can be randomized
@@ -47,8 +53,9 @@ def initialize():
 
 def render(screen, snake, food):
     # var for rectangle size
-    rect_size = 50
+    rect_size = 20
     food_size = 15
+
     # This fills the background, so the previous image does not stay on screen
     screen.fill("white")
 
@@ -87,7 +94,7 @@ def key_input(snake):
 def border(snake):
     if snake.get_pos_list()[0][0] <= 10 or snake.get_pos_list()[0][0] >= 910:
         snake.set_curr_direction("stop")
-    elif snake.get_pos_list()[0][1] <= 10 or snake.get_pos_list()[0][1] >= 600:
+    elif snake.get_pos_list()[0][1] <= 10 or snake.get_pos_list()[0][1] >= 660:
         snake.set_curr_direction("stop")
 
     return snake

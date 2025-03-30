@@ -16,7 +16,7 @@ class Python:
     # initializes class once created
     def __init__(self):
         self.set_length(1)
-        self.set_curr_direction("right")
+        self.set_curr_direction("none")
         self.set_curr_score(0)
         self.set_pos_list([pygame.math.Vector2(480, 360)])
         self.set_head_pos(pygame.math.Vector2(480, 360))
@@ -28,18 +28,17 @@ class Python:
         print(self.get_curr_direction())
         match self.get_curr_direction():
             case "up":
-                self.set_head_pos(pygame.math.Vector2(self.get_head_pos().x, self.get_head_pos().y - 5))
+                self.set_head_pos(pygame.math.Vector2(self.get_head_pos().x, self.get_head_pos().y - 20))
             case "down":
-                self.set_head_pos(pygame.math.Vector2(self.get_head_pos().x, self.get_head_pos().y + 5))
+                self.set_head_pos(pygame.math.Vector2(self.get_head_pos().x, self.get_head_pos().y + 20))
             case "right":
-                self.set_head_pos(pygame.math.Vector2(self.get_head_pos().x + 5, self.get_head_pos().y))
+                self.set_head_pos(pygame.math.Vector2(self.get_head_pos().x + 20, self.get_head_pos().y))
             case "left":
-                self.set_head_pos(pygame.math.Vector2(self.get_head_pos().x - 5, self.get_head_pos().y))
+                self.set_head_pos(pygame.math.Vector2(self.get_head_pos().x - 20, self.get_head_pos().y))
         # updates variable
         lst_change = self.get_pos_list()
         lst_change[0] = self.get_head_pos()
         self.set_pos_list(lst_change)
-
 
     # getters
     def get_length(self):
