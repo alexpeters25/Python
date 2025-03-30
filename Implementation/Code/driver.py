@@ -25,6 +25,7 @@ def main():
         if snake.get_curr_direction() == "stop":
             running = False
         # calls the function from the python class that changes the position of the snakes head
+        # if statement triggers every 100 ms and resets timer
         if movement_timer - time.time() < -0.1:
             snake.change_head_pos()
             movement_timer = time.time()
