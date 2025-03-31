@@ -45,7 +45,7 @@ def main():
 def initialize():
     pygame.init()
     snake = Python()
-    display = pygame.display.set_mode(size=(960, 720))
+    display = pygame.display.set_mode(size=(720, 720))
     clock = pygame.time.Clock()
     food = Food()
     return display, clock, snake, food
@@ -54,7 +54,8 @@ def initialize():
 def render(screen, snake, food):
     # var for rectangle size
     rect_size = 20
-    food_size = 15
+
+    food_size = 10
 
     # This fills the background, so the previous image does not stay on screen
     screen.fill("white")
@@ -100,6 +101,7 @@ def border(snake):
     return snake
 
 # Need a function to generate the head?
+# sure, it can be called from the render function
 '''
 def adam_head():
     # head = pygame.image.load("spanieram.jpg").convert_alpha()
