@@ -4,6 +4,7 @@
 2. [Scope Statement](Planning/scope.md)
 3. [Milestones](Planning/milestone.md)
 4. [Timeline](Planning/Timelines.md)
+5. [Members](Planning/members.md)
 
 ## [Milestone One](https://github.com/alexpeters25/Python/tree/main/Implementation/Milestone%20One)
 1. [Milestone One Requirements](https://github.com/alexpeters25/Python/blob/main/Implementation/Milestone%20One/Milestone_one_requirements.md)
