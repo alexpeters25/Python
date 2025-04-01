@@ -40,6 +40,20 @@ class Python:
         lst_change[0] = self.get_head_pos()
         self.set_pos_list(lst_change)
 
+    # returns x coordinates of get_pos_list() this is used in apple_collision for forbidden coordinates
+    def get_x_coordinates(self):
+        x = []
+        for length in self.get_pos_list():
+            x.append(length.x)
+        return x
+
+    # same thing but for y
+    def get_y_coordinates(self):
+        y = []
+        for length in self.get_pos_list():
+            y.append(length.y)
+        return y
+
     # getters
     def get_length(self):
         return self.__length
