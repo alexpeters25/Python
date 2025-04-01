@@ -1,3 +1,6 @@
+# --Getting Started--
+(Description Goes Here)
+
 # --Index--
 ## Document
 1. [Executive Summary](Planning/executive_summary.md)
