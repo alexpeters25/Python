@@ -106,9 +106,9 @@ def apple_collision(snake_rects, apple_circle, snake, food):
 
 
 def border(snake):
-    if snake.get_pos_list()[0][0] <= 0 or snake.get_pos_list()[0][0] >= 720:
+    if snake.get_pos_list()[0][0] <= -1 or snake.get_pos_list()[0][0] >= 721:
         snake.set_curr_direction("stop")
-    elif snake.get_pos_list()[0][1] <= 0 or snake.get_pos_list()[0][1] >= 720:
+    elif snake.get_pos_list()[0][1] <= -1 or snake.get_pos_list()[0][1] >= 721:
         snake.set_curr_direction("stop")
 
     return snake
