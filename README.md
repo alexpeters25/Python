@@ -3,11 +3,11 @@
 
 # --Index--
 ## Document
-1. [Executive Summary](Planning/executive_summary.md)
-2. [Scope Statement](Planning/scope.md)
-3. [Milestones](Planning/milestone.md)
-4. [Timeline](Planning/Timelines.md)
-5. [Members](Planning/members.md)
+1. [Members](Planning/members.md)
+2. [Executive Summary](Planning/executive_summary.md)
+3. [Scope Statement](Planning/scope.md)
+4. [Milestones](Planning/milestone.md)
+5. [Timeline](Planning/Timelines.md)
 
 ## [Milestone One](https://github.com/alexpeters25/Python/tree/main/Implementation/Milestone%20One)
 1. [Milestone One Requirements](https://github.com/alexpeters25/Python/blob/main/Implementation/Milestone%20One/Milestone_one_requirements.md)
