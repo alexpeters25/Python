@@ -81,16 +81,16 @@ def key_input(snake):
     keys = pygame.key.get_pressed()
     # check keys being pressed, and changes current direction depending on the key being pressed
     # pygame.K_CHARACTER references the point in the list referencing that character
-    if keys[pygame.K_UP] or keys[pygame.K_w]:
+    if keys[pygame.K_UP] or keys[pygame.K_w] and snake.get_curr_direction() != "down":
         snake.set_curr_direction("up")
 
-    elif keys[pygame.K_DOWN] or keys[pygame.K_s]:
+    elif keys[pygame.K_DOWN] or keys[pygame.K_s] and snake.get_curr_direction() != "up":
         snake.set_curr_direction("down")
 
-    elif keys[pygame.K_RIGHT] or keys[pygame.K_d]:
+    elif keys[pygame.K_RIGHT] or keys[pygame.K_d] and snake.get_curr_direction() != "left":
         snake.set_curr_direction("right")
 
-    elif keys[pygame.K_LEFT] or keys[pygame.K_a]:
+    elif keys[pygame.K_LEFT] or keys[pygame.K_a] and snake.get_curr_direction() != "right":
         snake.set_curr_direction("left")
 
     return snake
