@@ -2,7 +2,7 @@
 (Description Goes Here)
 
 # --Index--
-## Document
+## [Documentatiion](https://github.com/alexpeters25/Python/tree/main/Planning)
 1. [Members](Planning/members.md)
 2. [Executive Summary](Planning/executive_summary.md)
 3. [Scope Statement](Planning/scope.md)
