@@ -70,8 +70,24 @@ def render(screen, snake, food):
     pygame.draw.rect(screen, (18, 166, 48), rect=playing_field)
     pygame.draw.rect(screen, (46, 26, 10), rect=field_border, width=5)
 
+    # field grid
+    grid_squares_light = []
+    grid_squares_dark = []
 
+    # Each white square
+    for length in range(15):
+        print(f"length: {length}")
+        for width in range(15):
+            print(f"width: {width}")
+            grid_squares_light.append(pygame.Rect(60+(2*rect_size*width), 60+(2*rect_size*length), rect_size, rect_size))
+            grid_squares_light.append(pygame.Rect((60 + rect_size) + 2*rect_size*width, (60+rect_size)+(2*rect_size*length), rect_size, rect_size ))
+            # print(f"Light squares: {grid_squares_light}")
 
+    for i in range(len(grid_squares_light)):
+        pygame.draw.rect(screen, (18, 158, 48), rect=(grid_squares_light[i]))
+
+    # for length in range(15):
+        # pygame.Rect(60, 60+(rect_size*length), rect_size, rect_size)
 
 
 
@@ -82,12 +98,13 @@ def render(screen, snake, food):
     # update score
     pygame.display.set_caption("Score: " + str(snake.get_curr_score()))
     # render snake here
-    for length in range(len(snake.get_pos_list())):
+    for width in range(len(snake.get_pos_list())):
         # uses draw.rect() which is formatted  as (display being drawn on, color,
         #                                         rect(x position, y position, width, length)
-        snakes_squares.append(pygame.Rect(snake.get_pos_list()[length].x, snake.get_pos_list()[length].y,
+        snakes_squares.append(pygame.Rect(snake.get_pos_list()[width].x, snake.get_pos_list()[width].y,
                                           rect_size, rect_size))
-        pygame.draw.rect(screen, "green", rect=(snakes_squares[length]))
+        print(snakes_squares)
+        pygame.draw.rect(screen, "green", rect=(snakes_squares[width]))
 
     apple = pygame.draw.circle(screen, "red", (food.get_curr_pos().x, food.get_curr_pos().y), food_size)
     apple_collision(snakes_squares, apple, snake, food)
