@@ -37,7 +37,6 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-
     return
 
 
@@ -71,10 +70,8 @@ def render(screen, snake, food):
     pygame.draw.rect(screen, (46, 26, 10), rect=field_border, width=5)
 
     # field grid
+    # Create each darker square in grid
     grid_squares_light = []
-    grid_squares_dark = []
-
-    # Each white square
     for length in range(15):
         print(f"length: {length}")
         for width in range(15):
@@ -83,17 +80,9 @@ def render(screen, snake, food):
             grid_squares_light.append(pygame.Rect((60 + rect_size) + 2*rect_size*width, (60+rect_size)+(2*rect_size*length), rect_size, rect_size ))
             # print(f"Light squares: {grid_squares_light}")
 
+    # Print each square onto the field
     for i in range(len(grid_squares_light)):
         pygame.draw.rect(screen, (18, 158, 48), rect=(grid_squares_light[i]))
-
-    # for length in range(15):
-        # pygame.Rect(60, 60+(rect_size*length), rect_size, rect_size)
-
-
-
-
-
-
 
     # update score
     pygame.display.set_caption("Score: " + str(snake.get_curr_score()))
@@ -149,12 +138,6 @@ def border(snake):
 
     return snake
 
-# Need a function to generate the head?
-# sure, it can be called from the render function
-'''
-def adam_head():
-    # head = pygame.image.load("spanieram.jpg").convert_alpha()
-'''
 
 if __name__ == "__main__":
     main()
