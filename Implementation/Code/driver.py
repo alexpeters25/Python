@@ -45,7 +45,7 @@ def main():
 def initialize():
     pygame.init()
     snake = Python()
-    display = pygame.display.set_mode(size=(720, 720))
+    display = pygame.display.set_mode(size=(720, 720))          # Adjust for window
     clock = pygame.time.Clock()
     food = Food()
     return display, clock, snake, food
@@ -54,12 +54,31 @@ def initialize():
 def render(screen, snake, food):
     # var for rectangle size
     rect_size = 20
-    # var for food size
-    food_size = 10
+    # var for food size, always proportional to rect_size
+    food_size = rect_size / 2
     # list stores rectangles to check for collision
     snakes_squares = []
     # This fills the background, so the previous image does not stay on screen
-    screen.fill("white")
+    screen.fill(color=(76, 179, 252))
+
+    # Screen dimensions currently 720x720
+    x = 720
+    y = 720
+    # playing field
+    playing_field = pygame.Rect(60, 60, x-120, y-120)
+    field_border = pygame.Rect(55, 55, x-110, y-110)
+    pygame.draw.rect(screen, (18, 166, 48), rect=playing_field)
+    pygame.draw.rect(screen, (46, 26, 10), rect=field_border, width=5)
+
+
+
+
+
+
+
+
+
+
     # update score
     pygame.display.set_caption("Score: " + str(snake.get_curr_score()))
     # render snake here
@@ -106,9 +125,9 @@ def apple_collision(snake_rects, apple_circle, snake, food):
 
 
 def border(snake):
-    if snake.get_pos_list()[0][0] <= -1 or snake.get_pos_list()[0][0] >= 721:
+    if snake.get_pos_list()[0][0] <= 59 or snake.get_pos_list()[0][0] >= 641:
         snake.set_curr_direction("stop")
-    elif snake.get_pos_list()[0][1] <= -1 or snake.get_pos_list()[0][1] >= 721:
+    elif snake.get_pos_list()[0][1] <= 59 or snake.get_pos_list()[0][1] >= 641:
         snake.set_curr_direction("stop")
 
     return snake
