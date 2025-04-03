@@ -73,12 +73,9 @@ def render(screen, snake, food):
     # Create each darker square in grid
     grid_squares_light = []
     for length in range(15):
-        print(f"length: {length}")
         for width in range(15):
-            print(f"width: {width}")
             grid_squares_light.append(pygame.Rect(60+(2*rect_size*width), 60+(2*rect_size*length), rect_size, rect_size))
             grid_squares_light.append(pygame.Rect((60 + rect_size) + 2*rect_size*width, (60+rect_size)+(2*rect_size*length), rect_size, rect_size ))
-            # print(f"Light squares: {grid_squares_light}")
 
     # Print each square onto the field
     for i in range(len(grid_squares_light)):
@@ -92,7 +89,7 @@ def render(screen, snake, food):
         #                                         rect(x position, y position, width, length)
         snakes_squares.append(pygame.Rect(snake.get_pos_list()[width].x, snake.get_pos_list()[width].y,
                                           rect_size, rect_size))
-        print(snakes_squares)
+
         pygame.draw.rect(screen, "green", rect=(snakes_squares[width]))
 
     apple = pygame.draw.circle(screen, "red", (food.get_curr_pos().x, food.get_curr_pos().y), food_size)
