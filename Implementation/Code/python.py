@@ -15,6 +15,7 @@ class Python:
     __pos_list = [None]
     __previous_position = None
     # initializes class once created
+
     def __init__(self):
         self.set_length(1)
         self.set_curr_direction("none")
