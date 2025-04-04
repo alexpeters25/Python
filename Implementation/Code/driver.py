@@ -103,16 +103,20 @@ def key_input(snake):
     keys = pygame.key.get_pressed()
     # check keys being pressed, and changes current direction depending on the key being pressed
     # pygame.K_CHARACTER references the point in the list referencing that character
-    if keys[pygame.K_UP] or keys[pygame.K_w]:
+
+    if (keys[pygame.K_UP] or keys[pygame.K_w]) and snake.get_curr_direction() != "down":
+        if snake.get_curr_direction() == "down":
+            print("what the hell")
         snake.set_curr_direction("up")
 
-    elif keys[pygame.K_DOWN] or keys[pygame.K_s]:
+    elif (keys[pygame.K_DOWN] or keys[pygame.K_s]) and snake.get_curr_direction() != "up":
         snake.set_curr_direction("down")
 
-    elif keys[pygame.K_RIGHT] or keys[pygame.K_d]:
+    elif (keys[pygame.K_RIGHT] or keys[pygame.K_d]) and snake.get_curr_direction() != "left":
         snake.set_curr_direction("right")
 
-    elif keys[pygame.K_LEFT] or keys[pygame.K_a]:
+    elif (keys[pygame.K_LEFT] or keys[pygame.K_a]) and (snake.get_curr_direction() != "right"
+                                                        or snake.get_curr_direction() != "none"):
         snake.set_curr_direction("left")
 
     return snake
@@ -120,6 +124,7 @@ def key_input(snake):
 
 def apple_collision(snake_rects, apple_circle, snake, food):
     if snake_rects[0].collidepoint(food.get_curr_pos()):
+        snake.increase_size()
         forbidden_x = snake.get_x_coordinates()
         forbidden_y = snake.get_y_coordinates()
         snake.set_curr_score(snake.get_curr_score() + 1)
