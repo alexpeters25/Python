@@ -115,6 +115,7 @@ def key_input(snake):
     elif (keys[pygame.K_RIGHT] or keys[pygame.K_d]) and snake.get_curr_direction() != "left":
         snake.set_curr_direction("right")
 
+    # this 'or' is causing problems
     elif (keys[pygame.K_LEFT] or keys[pygame.K_a]) and (snake.get_curr_direction() != "right"
                                                         or snake.get_curr_direction() != "none"):
         snake.set_curr_direction("left")
