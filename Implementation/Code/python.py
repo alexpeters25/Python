@@ -27,13 +27,12 @@ class Python:
 
     # changes position of head depending on the state of __curr_direction
     def change_head_pos(self):
+        # stores previous position that is used for adding parts to the snakes body
         self.set_previous_position(pygame.math.Vector2(self.get_pos_list()[-1]))
         match self.get_curr_direction():
             case "up":
                 self.change_body_position()
                 self.set_head_pos(pygame.math.Vector2(self.get_head_pos().x, self.get_head_pos().y - 20))
-
-
             case "down":
                 self.change_body_position()
                 self.set_head_pos(pygame.math.Vector2(self.get_head_pos().x, self.get_head_pos().y + 20))
@@ -51,11 +50,14 @@ class Python:
         lst_change[0] = self.get_head_pos()
         self.set_pos_list(lst_change)
 
+# changes position of body
     def change_body_position(self):
         new_pos_list = []
+        # uses a reversed list to pass coordinates backwards
         for last_pos in reversed(range(1, len(self.get_pos_list()))):
             new_pos_list.append(pygame.math.Vector2(self.get_pos_list()[last_pos - 1]))
         new_pos_list.append(pygame.math.Vector2(self.get_pos_list()[0]))
+        # list is re-reversed to use for movement
         # list must be reversed manually because slicing changes the data type of the list
         new_list_reversed = []
         for i in reversed(range(len(new_pos_list))):
@@ -64,6 +66,7 @@ class Python:
 
     # handles size change
     def increase_size(self):
+        # uses the stored position to create a body part for the snake
         new_pos_list = self.get_pos_list()
         new_pos_list.append(self.get_previous_position())
         self.set_pos_list(new_pos_list)

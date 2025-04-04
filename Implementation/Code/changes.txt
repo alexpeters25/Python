@@ -1,3 +1,0 @@
-Added __previous_score
-Added __previous_pos
-Added increase_size()
