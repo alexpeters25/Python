@@ -1,3 +1,3 @@
 Added __previous_score
-Added __body_directions
+Added __previous_pos
 Added increase_size()

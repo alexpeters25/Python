@@ -13,15 +13,13 @@ class Python:
     # This list will contain a list of vectors to draw from using pygame.math.Vector2(), which stores an x and y value
     # individual X or Y value can be called with [variable].x or [variable].y
     __pos_list = [None]
-    # stores directions for body
-    __body_directions = [None]
-
+    __previous_position = None
     # initializes class once created
     def __init__(self):
         self.set_length(1)
         self.set_curr_direction("none")
         self.set_curr_score(0)
-        self.set_pos_list([pygame.math.Vector2(480, 360)])
+        self.set_pos_list([pygame.math.Vector2(480, 360), pygame.math.Vector2(500, 360)])
         self.set_head_pos(pygame.math.Vector2(480, 360))
         self.set_previous_score(0)
 
@@ -29,61 +27,46 @@ class Python:
 
     # changes position of head depending on the state of __curr_direction
     def change_head_pos(self):
-        print(self.get_curr_direction())
+        self.set_previous_position(pygame.math.Vector2(self.get_pos_list()[-1]))
         match self.get_curr_direction():
             case "up":
+                self.change_body_position()
                 self.set_head_pos(pygame.math.Vector2(self.get_head_pos().x, self.get_head_pos().y - 20))
-                self.body_directions("up")
+
+
             case "down":
+                self.change_body_position()
                 self.set_head_pos(pygame.math.Vector2(self.get_head_pos().x, self.get_head_pos().y + 20))
-                self.body_directions("down")
+
             case "right":
+                self.change_body_position()
                 self.set_head_pos(pygame.math.Vector2(self.get_head_pos().x + 20, self.get_head_pos().y))
-                self.body_directions("right")
+
             case "left":
+                self.change_body_position()
                 self.set_head_pos(pygame.math.Vector2(self.get_head_pos().x - 20, self.get_head_pos().y))
-                self.body_directions("left")
+
         # updates variable
         lst_change = self.get_pos_list()
         lst_change[0] = self.get_head_pos()
         self.set_pos_list(lst_change)
-    # not ready to test, still need to make move and add parts when apple is collected
 
-    def body_directions(self, direction):
-        new_lst = []
-        for previous_dir in reversed(range(len(self.get_body_direction()))):
-            new_lst.append(self.get_body_direction()[previous_dir - 1])
-        new_lst.append(direction)
-        new_lst = new_lst.reverse()
+    def change_body_position(self):
+        new_pos_list = []
+        for last_pos in reversed(range(1, len(self.get_pos_list()))):
+            new_pos_list.append(pygame.math.Vector2(self.get_pos_list()[last_pos - 1]))
+        new_pos_list.append(pygame.math.Vector2(self.get_pos_list()[0]))
+        # list must be reversed manually because slicing changes the data type of the list
+        new_list_reversed = []
+        for i in reversed(range(len(new_pos_list))):
+            new_list_reversed.append(pygame.math.Vector2(new_pos_list[i]))
+        self.set_pos_list(new_list_reversed)
 
     # handles size change
     def increase_size(self):
-        # this appends the direction of the last body part to the new body part, this will cause a weird interation if
-        # the last part is in a corner, but it will be functional as long as border collision does not apply to the body
-        # which it has no reason to
-        self.set_body_directions([self.get_body_direction(), self.get_body_direction()[self.get_length]])
-        # match case functions similarly to an if statement, is usually more efficient and makes sense here since
-        # we know the possible output
-        match self.get_body_direction()[self.get_length]:
-            # this is formatted as set_pos_list([get_pos_list(),
-            # vector(poslist[last].x +- change, vector(poslist[last].y += change)])
-            # change is in the opposite direct of where its currently heading
-            case "up":
-                self.set_pos_list([self.get_pos_list(),
-                                   pygame.math.Vector2(self.get_pos_list()[self.get_length()].x,
-                                                       self.get_pos_list()[self.get_length()].y - 20)])
-            case "down":
-                self.set_pos_list([self.get_pos_list(),
-                                   pygame.math.Vector2(self.get_pos_list()[self.get_length()].x,
-                                                       self.get_pos_list()[self.get_length()].y + 20)])
-            case "right":
-                self.set_pos_list([self.get_pos_list(),
-                                   pygame.math.Vector2(self.get_pos_list()[self.get_length()].x - 20,
-                                                       self.get_pos_list()[self.get_length()].y)])
-            case "left":
-                self.set_pos_list([self.get_pos_list(),
-                                   pygame.math.Vector2(self.get_pos_list()[self.get_length()].x + 20,
-                                                       self.get_pos_list()[self.get_length()].y)])
+        new_pos_list = self.get_pos_list()
+        new_pos_list.append(self.get_previous_position())
+        self.set_pos_list(new_pos_list)
         self.set_length(self.get_length() + 1)
 
     # returns x coordinates of get_pos_list() this is used in apple_collision for forbidden coordinates
@@ -119,8 +102,8 @@ class Python:
     def get_previous_score(self):
         return self.__previous_score
 
-    def get_body_direction(self):
-        return self.__body_directions
+    def get_previous_position(self):
+        return self.__previous_position
 
     # setters
     def set_length(self, length):
@@ -141,8 +124,8 @@ class Python:
     def set_previous_score(self, previous_score):
         self.__previous_score = previous_score
 
-    def set_body_directions(self, directions):
-        self.__body_directions = directions
+    def set_previous_position(self, previous_position):
+        self.__previous_position = previous_position
 
     # __str__
     def __str__(self):
