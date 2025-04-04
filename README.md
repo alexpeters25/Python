@@ -1,4 +1,5 @@
 # --Getting Started--
+[Tutorial](https://github.com/alexpeters25/Python/blob/main/Planning/getting_started_tutorial.md)
 (Description Goes Here)
 
 # --Index--
