@@ -5,13 +5,13 @@ Make sure you have the following installed on your system:
 - Python Ver.: 3.7 or Later
 - Pygame library (used for building the game interface)
 
-## Runnning the game
+## Running the game
 1. Open your terminal or command prompt
-2. Navigate to the folder where your game code is locatedRun
+2. Navigate to the folder where your game code is located
 3. Run the game
 
 ## How to play
-- Use W, A, S, D or Arrow Keys to move
+- Use WASD or Arrow Keys to move
 - Eat items like:
   - Homework
   - Tests
