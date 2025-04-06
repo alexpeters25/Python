@@ -20,6 +20,7 @@
 1. [Milestone Two Requirements](https://github.com/alexpeters25/Python/blob/main/Implementation/Milestone%20Two/milestone-two-testing-results.md)
 2. [Milestone Two Testing Results](https://github.com/alexpeters25/Python/blob/main/Implementation/Milestone%20Two/milestone-two-testing-results.md)
 3. [Program Documentation](https://github.com/alexpeters25/Python/blob/main/Implementation/Milestone%20Two/program_documentation.md)
+4. [User Story](https://github.com/alexpeters25/Python/blob/main/Implementation/Milestone%20Two/user_story_milestone_two.jpg)
 
 ## [Milestone Three](https://github.com/alexpeters25/Python/tree/main/Implementation/Milestone%203)
 1. [Milestone Three Requirements](https://github.com/alexpeters25/Python/blob/main/Implementation/Milestone%203/requirements.md)
