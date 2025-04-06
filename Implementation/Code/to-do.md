@@ -5,4 +5,4 @@ Next Priorities
   - Game ends/resets when the snake collides with itself
 
 Other
-  - Window resolution dependant on monitor
+  - Window resolution dependent on monitor
