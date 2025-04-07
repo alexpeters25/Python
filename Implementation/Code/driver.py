@@ -1,6 +1,8 @@
 # Best Group/Group Python
 # All code surrounding pygame heavily references pygame documentation
 # Milestone One: "Snake" that can be controlled by the player
+
+
 import pygame
 import time
 from python import Python
@@ -15,7 +17,8 @@ def main():
     movement_timer = time.time()
 
     ####trying to import the picture of our dear leader (NOT mf'in WORKING)
-    adams_snake_face = pygame.image.load("Images/french_face.png")
+    adams_snake_face = pygame.image.load("french_face.png").convert_alpha()
+    adams_snake_face = pygame.transform.scale(adams_snake_face, size=(50, 50))
 
     # This loop runs through different functions until the user closes the window
     while running:
@@ -66,19 +69,22 @@ def render(screen, snake, food, adams_snake_face):
     # list stores rectangles to check for collision
     snakes_squares = []
     # This fills the background, so the previous image does not stay on screen
-    screen.fill(color=(76, 179, 252))
+    # screen.fill(color=(76, 179, 252))
 
-    ####### adding image of face to snake head (ALSO not mf'in working!!!)
-    snake.image.blit(adams_snake_face, (0, 0))
+
+
 
     # Screen dimensions currently 720x720
     x = 720
     y = 720
     # playing field
+    ####snake face added
+    face = adams_snake_face.get_rect(center=(50,50))
     playing_field = pygame.Rect(60, 60, x-120, y-120)
     field_border = pygame.Rect(55, 55, x-110, y-110)
     pygame.draw.rect(screen, (18, 166, 48), rect=playing_field)
     pygame.draw.rect(screen, (46, 26, 10), rect=field_border, width=5)
+    
 
     # field grid
     # Create each darker square in grid
@@ -121,7 +127,9 @@ def render(screen, snake, food, adams_snake_face):
                 snake.get_pos_list()[width].x, snake.get_pos_list()[width].y,
                                           rect_size, rect_size
             )
+
         )
+
 
         pygame.draw.rect(
             screen, "green", rect=(
@@ -137,8 +145,10 @@ def render(screen, snake, food, adams_snake_face):
     apple_collision(
         snakes_squares, apple, snake, food
     )
+
     # renders display, end of function
     pygame.display.flip()
+    pygame.display.update()
 
 
 def key_input(snake):
