@@ -17,7 +17,7 @@
 4. [User Story](https://github.com/alexpeters25/Python/blob/main/Implementation/Milestone%20One/user_story_milestone_one.jpg)
 
 ## [Milestone Two](https://github.com/alexpeters25/Python/tree/main/Implementation/Milestone%20Two)
-1. [Milestone Two Requirements](https://github.com/alexpeters25/Python/blob/main/Implementation/Milestone%20Two/Requirements.md))
+1. [Milestone Two Requirements](https://github.com/alexpeters25/Python/blob/main/Implementation/Milestone%20Two/Requirements.md)
 2. [Milestone Two Testing Results](https://github.com/alexpeters25/Python/blob/main/Implementation/Milestone%20Two/milestone-two-testing-results.md)
 3. [Program Documentation](https://github.com/alexpeters25/Python/blob/main/Implementation/Milestone%20Two/program_documentation.md)
 4. [User Story](https://github.com/alexpeters25/Python/blob/main/Implementation/Milestone%20Two/user_story_milestone_two.jpg)
