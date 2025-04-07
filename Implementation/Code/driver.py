@@ -13,7 +13,9 @@ def main():
     screen, clock, snake, food = initialize()
     # used to ensure movement only occurs every 100 ms (subject to change)
     movement_timer = time.time()
-    adams_snake_face = pygame.image.load("Images/french face.png")
+
+    ####trying to import the picture of our dear leader (NOT mf'in WORKING)
+    adams_snake_face = pygame.image.load("Images/french_face.png")
 
     # This loop runs through different functions until the user closes the window
     while running:
@@ -66,7 +68,7 @@ def render(screen, snake, food, adams_snake_face):
     # This fills the background, so the previous image does not stay on screen
     screen.fill(color=(76, 179, 252))
 
-    ####### adding image of face to snake head
+    ####### adding image of face to snake head (ALSO not mf'in working!!!)
     snake.image.blit(adams_snake_face, (0, 0))
 
     # Screen dimensions currently 720x720
