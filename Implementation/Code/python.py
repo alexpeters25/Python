@@ -2,6 +2,7 @@
 import pygame
 
 
+
 class Python:
     # remember to create a getter and setter if you create a new var
     # (and also to set it in __init__)

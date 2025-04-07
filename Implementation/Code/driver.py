@@ -27,7 +27,7 @@ def main():
         # sets frame rate
         clock.tick(60)
         # calls render function to render screen
-        render(screen, snake, food)
+        render(screen, snake, food, adams_snake_face)
         # checks input
         snake = key_input(snake)
         # border function set up where if the snake head touches it, the game quits running
