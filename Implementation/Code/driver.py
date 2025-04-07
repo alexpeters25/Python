@@ -84,7 +84,8 @@ def render(screen, snake, food, adams_snake_face):
     field_border = pygame.Rect(55, 55, x-110, y-110)
     pygame.draw.rect(screen, (18, 166, 48), rect=playing_field)
     pygame.draw.rect(screen, (46, 26, 10), rect=field_border, width=5)
-    
+
+
 
     # field grid
     # Create each darker square in grid
@@ -145,6 +146,9 @@ def render(screen, snake, food, adams_snake_face):
     apple_collision(
         snakes_squares, apple, snake, food
     )
+
+    #DMRE1 helped us get this right after 3 hours of failure (ChatGPT)
+    screen.blit(adams_snake_face, snake.get_pos_list()[0])
 
     # renders display, end of function
     pygame.display.flip()
