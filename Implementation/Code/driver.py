@@ -18,7 +18,7 @@ def main():
 
     ####trying to import the picture of our dear leader (NOT mf'in WORKING)
     adams_snake_face = pygame.image.load("french_face.png").convert_alpha()
-    adams_snake_face = pygame.transform.scale(adams_snake_face, size=(50, 50))
+    adams_snake_face = pygame.transform.scale(adams_snake_face, size=(3840, 2160))
 
     # This loop runs through different functions until the user closes the window
     while running:
@@ -69,7 +69,7 @@ def render(screen, snake, food, adams_snake_face):
     # list stores rectangles to check for collision
     snakes_squares = []
     # This fills the background, so the previous image does not stay on screen
-    # screen.fill(color=(76, 179, 252))
+    screen.fill(color=(76, 179, 252))
 
 
 
@@ -148,9 +148,14 @@ def render(screen, snake, food, adams_snake_face):
     )
 
     #DMRE1 helped us get this right after 3 hours of failure (ChatGPT)
-    screen.blit(adams_snake_face, snake.get_pos_list()[0])
+    head_centered = adams_snake_face.get_rect(center=(
+        snake.get_pos_list()[0].x + 10,
+        snake.get_pos_list()[0].y + 10
+    ))
+    screen.blit(adams_snake_face, head_centered)
 
-    # renders display, end of function
+
+# renders display, end of function
     pygame.display.flip()
     pygame.display.update()
 
