@@ -1,16 +1,18 @@
-# Best Group/Group Python
+ # Best Group/Group Python
 import pygame
 
 
 class Python:
-    # remember to create a getter and setter if you create a new var (and also to set it in __init__)
+    # remember to create a getter and setter if you create a new var
+    # (and also to set it in __init__)
     __length = -1
     # pygame uses format K_DIRECTION, so that's what I'm using
     __curr_direction = "ERR"
     __curr_score = -1
     __previous_score = -1
     __head_pos = -1
-    # This list will contain a list of vectors to draw from using pygame.math.Vector2(), which stores an x and y value
+    # This list will contain a list of vectors to draw from using pygame.math.Vector2(),
+    # which stores an x and y value
     # individual X or Y value can be called with [variable].x or [variable].y
     __pos_list = [None]
     __previous_position = None
@@ -28,6 +30,9 @@ class Python:
 
     # changes position of head depending on the state of __curr_direction
     def change_head_pos(self):
+        # adds image to head
+
+
         # stores previous position that is used for adding parts to the snakes body
         self.set_previous_position(pygame.math.Vector2(self.get_pos_list()[-1]))
         match self.get_curr_direction():

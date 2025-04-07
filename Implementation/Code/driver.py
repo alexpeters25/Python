@@ -13,9 +13,15 @@ def main():
     screen, clock, snake, food = initialize()
     # used to ensure movement only occurs every 100 ms (subject to change)
     movement_timer = time.time()
+    adams_snake_face = pygame.image.load("Images/french face.png")
 
     # This loop runs through different functions until the user closes the window
     while running:
+        # when the game starts audio file of adam saying "hello everybowdy" plays
+
+        # after time delay music starts
+
+
         # sets frame rate
         clock.tick(60)
         # calls render function to render screen
@@ -50,7 +56,7 @@ def initialize():
     return display, clock, snake, food
 
 
-def render(screen, snake, food):
+def render(screen, snake, food, adams_snake_face):
     # var for rectangle size
     rect_size = 20
     # var for food size, always proportional to rect_size
@@ -59,6 +65,9 @@ def render(screen, snake, food):
     snakes_squares = []
     # This fills the background, so the previous image does not stay on screen
     screen.fill(color=(76, 179, 252))
+
+    ####### adding image of face to snake head
+    snake.image.blit(adams_snake_face, (0, 0))
 
     # Screen dimensions currently 720x720
     x = 720
@@ -74,12 +83,30 @@ def render(screen, snake, food):
     grid_squares_light = []
     for length in range(15):
         for width in range(15):
-            grid_squares_light.append(pygame.Rect(60+(2*rect_size*width), 60+(2*rect_size*length), rect_size, rect_size))
-            grid_squares_light.append(pygame.Rect((60 + rect_size) + 2*rect_size*width, (60+rect_size)+(2*rect_size*length), rect_size, rect_size ))
+            grid_squares_light.append(
+                pygame.Rect(
+                    60+(2*rect_size*width
+                        ), 60+(2*rect_size*length
+                               ), rect_size, rect_size
+                )
+            )
+            grid_squares_light.append(
+                pygame.Rect(
+                    (60 + rect_size
+                     ) + 2*rect_size*width,
+                    (60+rect_size)+(2*rect_size*length
+                                    ), rect_size, rect_size
+                )
+            )
 
     # Print each square onto the field
     for i in range(len(grid_squares_light)):
-        pygame.draw.rect(screen, (18, 158, 48), rect=(grid_squares_light[i]))
+        pygame.draw.rect(
+            screen, (
+                18, 158, 48), rect=(
+                grid_squares_light[i]
+            )
+        )
 
     # update score
     pygame.display.set_caption("Score: " + str(snake.get_curr_score()))
@@ -87,13 +114,27 @@ def render(screen, snake, food):
     for width in range(len(snake.get_pos_list())):
         # uses draw.rect() which is formatted  as (display being drawn on, color,
         #                                         rect(x position, y position, width, length)
-        snakes_squares.append(pygame.Rect(snake.get_pos_list()[width].x, snake.get_pos_list()[width].y,
-                                          rect_size, rect_size))
+        snakes_squares.append(
+            pygame.Rect(
+                snake.get_pos_list()[width].x, snake.get_pos_list()[width].y,
+                                          rect_size, rect_size
+            )
+        )
 
-        pygame.draw.rect(screen, "green", rect=(snakes_squares[width]))
+        pygame.draw.rect(
+            screen, "green", rect=(
+                snakes_squares[width]
+            )
+        )
 
-    apple = pygame.draw.circle(screen, "red", (food.get_curr_pos().x, food.get_curr_pos().y), food_size)
-    apple_collision(snakes_squares, apple, snake, food)
+    apple = pygame.draw.circle(
+        screen, "red", (
+            food.get_curr_pos().x, food.get_curr_pos().y
+        ), food_size
+    )
+    apple_collision(
+        snakes_squares, apple, snake, food
+    )
     # renders display, end of function
     pygame.display.flip()
 
@@ -125,6 +166,8 @@ def key_input(snake):
 
 def apple_collision(snake_rects, apple_circle, snake, food):
     if snake_rects[0].collidepoint(food.get_curr_pos()):
+        # this is where to add the sfx upon collision
+
         snake.increase_size()
         forbidden_x = snake.get_x_coordinates()
         forbidden_y = snake.get_y_coordinates()
