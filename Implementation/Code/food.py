@@ -12,20 +12,22 @@ class Food:
 
     # helpers
     def position_change(self, forbidden_x, forbidden_y):
-        randomizing = True
+
+        randomizing = [True]
         # this checks the screen size, so we don't have to change this later
         screen_size = str(pygame.display.get_surface())
         screen_size = screen_size.strip('<Surface(')
         screen_size = screen_size.strip("SW)>")
         screen_size_lst = screen_size.split("x")
         # This loop causes the program to choose a different position with collected
-        while randomizing:
+        while True in randomizing:
+            randomizing = [False]
             rand_position_x = random.randrange(start=70, stop=(int(screen_size_lst[0])-70), step=20)
             rand_position_y = random.randrange(start=70, stop=(int(screen_size_lst[1])-70), step=20)
             # this checks to see if rand x and rand y are both in forbidden positions
             for index in range(len(forbidden_x)):
-                if rand_position_x != forbidden_x[index] and rand_position_y != forbidden_y[index]:
-                    randomizing = False
+                if rand_position_x == forbidden_x[index] and rand_position_y == forbidden_y[index]:
+                    randomizing.append(True)
         self.set_curr_pos(pygame.math.Vector2(rand_position_x, rand_position_y))
 
     # getters
