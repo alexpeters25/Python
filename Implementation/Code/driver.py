@@ -17,15 +17,22 @@ def main():
     movement_timer = time.time()
 
     ####trying to import the picture of our dear leader (NOT mf'in WORKING)
-    adams_snake_face = pygame.image.load("french_face.png").convert_alpha()
-    adams_snake_face = pygame.transform.scale(adams_snake_face, size=(3840, 2160))
+    adams_snake_face = pygame.image.load("Images/french_face_real.png").convert_alpha()
+    adams_snake_face = pygame.transform.scale(adams_snake_face, size=(50, 50))
+
+    ####trying to import the song before the while running part
+    # after time delay music starts
+    pygame.mixer.music.load("Sounds/gameSong.wav")
 
     # This loop runs through different functions until the user closes the window
     while running:
         # when the game starts audio file of adam saying "hello everybowdy" plays
 
-        # after time delay music starts
 
+
+        # play the music, args: how many time sit repeats, where to start playing
+        #### MUSIC DOENST WORK RIGHT SOUNDS LIKE ASSS
+        pygame.mixer.music.play(-1, 0.0)
 
         # sets frame rate
         clock.tick(60)
