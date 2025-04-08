@@ -23,6 +23,9 @@ def main():
     ####trying to import the song before the while running part
     # after time delay music starts
     pygame.mixer.music.load("Sounds/gameSong.wav")
+    # play the music, args: how many time sit repeats, where to start playing
+    #### MUSIC DOENST WORK RIGHT SOUNDS LIKE ASSS
+    pygame.mixer.music.play(-1, 0.0)
 
     # This loop runs through different functions until the user closes the window
     while running:
@@ -30,9 +33,7 @@ def main():
 
 
 
-        # play the music, args: how many time sit repeats, where to start playing
-        #### MUSIC DOENST WORK RIGHT SOUNDS LIKE ASSS
-        pygame.mixer.music.play(-1, 0.0)
+
 
         # sets frame rate
         clock.tick(60)
