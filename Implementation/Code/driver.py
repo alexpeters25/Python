@@ -39,19 +39,22 @@ def main():
         clock.tick(60)
         # calls render function to render screen
         render(screen, snake, food, adams_snake_face)
-        # checks input
-        snake = key_input(snake)
+     
         # border function set up where if the snake head touches it, the game quits running
         border(snake)
         if snake.get_curr_direction() == "stop":
-            running = False
+            snake = Python(snake.get_curr_score())
+        # take user input
+        key_input(snake)
+
         # calls the function from the python class that changes the position of the snakes head
         # if statement triggers every 100 ms and resets timer
         if movement_timer - time.time() < -0.1:
+
             snake.change_head_pos()
             movement_timer = time.time()
-        # Allows "X" button on window to be pressed
 
+        # Allows "X" button on window to be pressed
         # Need a coordinate system so that fruit placement can be randomized
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -62,7 +65,7 @@ def main():
 # initializes pygame: referenced https://www.pygame.org/docs/, also referenced for rendering
 def initialize():
     pygame.init()
-    snake = Python()
+    snake = Python(0)
     display = pygame.display.set_mode(size=(720, 720))          # Adjust for window
     clock = pygame.time.Clock()
     food = Food()
@@ -126,11 +129,13 @@ def render(screen, snake, food, adams_snake_face):
         )
 
     # update score
-    pygame.display.set_caption("Score: " + str(snake.get_curr_score()))
+    pygame.display.set_caption("Score: " + str(snake.get_curr_score()) + " | Previous Score: " +
+                               str(snake.get_previous_score()))
     # render snake here
     for width in range(len(snake.get_pos_list())):
         # uses draw.rect() which is formatted  as (display being drawn on, color,
         #                                         rect(x position, y position, width, length)
+
         snakes_squares.append(
             pygame.Rect(
                 snake.get_pos_list()[width].x, snake.get_pos_list()[width].y,
@@ -154,7 +159,7 @@ def render(screen, snake, food, adams_snake_face):
     apple_collision(
         snakes_squares, apple, snake, food
     )
-
+    snake_collision(snakes_squares, snake)
     #DMRE1 helped us get this right after 3 hours of failure (ChatGPT)
     head_centered = adams_snake_face.get_rect(center=(
         snake.get_pos_list()[0].x + 10,
@@ -164,6 +169,7 @@ def render(screen, snake, food, adams_snake_face):
 
 
 # renders display, end of function
+
     pygame.display.flip()
     pygame.display.update()
 
@@ -175,22 +181,19 @@ def key_input(snake):
     # pygame.K_CHARACTER references the point in the list referencing that character
 
     if (keys[pygame.K_UP] or keys[pygame.K_w]) and snake.get_curr_direction() != "down":
-        if snake.get_curr_direction() == "down":
-            print("what the hell")
-        snake.set_curr_direction("up")
+        snake.set_next_direction("up")
 
     elif (keys[pygame.K_DOWN] or keys[pygame.K_s]) and snake.get_curr_direction() != "up":
-        snake.set_curr_direction("down")
+        snake.set_next_direction("down")
 
-    elif (keys[pygame.K_RIGHT] or keys[pygame.K_d]) and snake.get_curr_direction() != "left":
-        snake.set_curr_direction("right")
+    elif ((keys[pygame.K_RIGHT] or keys[pygame.K_d]) and snake.get_curr_direction() != "left" and
+          snake.get_curr_direction() != "none"):
+        snake.set_next_direction("right")
 
     # this 'or' is causing problems
-    elif (keys[pygame.K_LEFT] or keys[pygame.K_a]) and (snake.get_curr_direction() != "right"
-                                                        or snake.get_curr_direction() != "none"):
-        snake.set_curr_direction("left")
+    elif (keys[pygame.K_LEFT] or keys[pygame.K_a]) and snake.get_curr_direction() != "right":
+        snake.set_next_direction("left")
 
-    return snake
 
 
 def apple_collision(snake_rects, apple_circle, snake, food):
@@ -203,6 +206,14 @@ def apple_collision(snake_rects, apple_circle, snake, food):
         snake.set_curr_score(snake.get_curr_score() + 1)
         food.position_change(forbidden_x, forbidden_y)
         # this will also update snake length later
+
+
+def snake_collision(snake_rects, snake):
+    for index in range(1, len(snake_rects)):
+        if snake_rects[0].collidepoint(snake.get_pos_list()[index]):
+            snake.set_curr_direction("stop")
+
+
 
 
 def border(snake):
