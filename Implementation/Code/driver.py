@@ -1,6 +1,8 @@
 # Best Group/Group Python
 # All code surrounding pygame heavily references pygame documentation
 # Milestone One: "Snake" that can be controlled by the player
+
+
 import pygame
 import time
 from python import Python
@@ -14,12 +16,30 @@ def main():
     # used to ensure movement only occurs every 100 ms (subject to change)
     movement_timer = time.time()
 
+    ####trying to import the picture of our dear leader (NOT mf'in WORKING)
+    adams_snake_face = pygame.image.load("Images/french_face_real.png").convert_alpha()
+    adams_snake_face = pygame.transform.scale(adams_snake_face, size=(50, 50))
+
+    ####trying to import the song before the while running part
+    # after time delay music starts
+    pygame.mixer.music.load("Sounds/gameSong.wav")
+    # play the music, args: how many time sit repeats, where to start playing
+    #### MUSIC DOENST WORK RIGHT SOUNDS LIKE ASSS
+    pygame.mixer.music.play(-1, 0.0)
+
     # This loop runs through different functions until the user closes the window
     while running:
+        # when the game starts audio file of adam saying "hello everybowdy" plays
+
+
+
+
+
         # sets frame rate
         clock.tick(60)
         # calls render function to render screen
-        render(screen, snake, food)
+        render(screen, snake, food, adams_snake_face)
+     
         # border function set up where if the snake head touches it, the game quits running
         border(snake)
         if snake.get_curr_direction() == "stop":
@@ -52,7 +72,7 @@ def initialize():
     return display, clock, snake, food
 
 
-def render(screen, snake, food):
+def render(screen, snake, food, adams_snake_face):
     # var for rectangle size
     rect_size = 20
     # var for food size, always proportional to rect_size
@@ -62,26 +82,51 @@ def render(screen, snake, food):
     # This fills the background, so the previous image does not stay on screen
     screen.fill(color=(76, 179, 252))
 
+
+
+
     # Screen dimensions currently 720x720
     x = 720
     y = 720
     # playing field
+    ####snake face added
+    face = adams_snake_face.get_rect(center=(50,50))
     playing_field = pygame.Rect(60, 60, x-120, y-120)
     field_border = pygame.Rect(55, 55, x-110, y-110)
     pygame.draw.rect(screen, (18, 166, 48), rect=playing_field)
     pygame.draw.rect(screen, (46, 26, 10), rect=field_border, width=5)
+
+
 
     # field grid
     # Create each darker square in grid
     grid_squares_light = []
     for length in range(15):
         for width in range(15):
-            grid_squares_light.append(pygame.Rect(60+(2*rect_size*width), 60+(2*rect_size*length), rect_size, rect_size))
-            grid_squares_light.append(pygame.Rect((60 + rect_size) + 2*rect_size*width, (60+rect_size)+(2*rect_size*length), rect_size, rect_size ))
+            grid_squares_light.append(
+                pygame.Rect(
+                    60+(2*rect_size*width
+                        ), 60+(2*rect_size*length
+                               ), rect_size, rect_size
+                )
+            )
+            grid_squares_light.append(
+                pygame.Rect(
+                    (60 + rect_size
+                     ) + 2*rect_size*width,
+                    (60+rect_size)+(2*rect_size*length
+                                    ), rect_size, rect_size
+                )
+            )
 
     # Print each square onto the field
     for i in range(len(grid_squares_light)):
-        pygame.draw.rect(screen, (18, 158, 48), rect=(grid_squares_light[i]))
+        pygame.draw.rect(
+            screen, (
+                18, 158, 48), rect=(
+                grid_squares_light[i]
+            )
+        )
 
     # update score
     pygame.display.set_caption("Score: " + str(snake.get_curr_score()) + " | Previous Score: " +
@@ -90,18 +135,43 @@ def render(screen, snake, food):
     for width in range(len(snake.get_pos_list())):
         # uses draw.rect() which is formatted  as (display being drawn on, color,
         #                                         rect(x position, y position, width, length)
-        snakes_squares.append(pygame.Rect(snake.get_pos_list()[width].x, snake.get_pos_list()[width].y,
-                                          rect_size, rect_size))
 
-        pygame.draw.rect(screen, "green", rect=(snakes_squares[width]))
+        snakes_squares.append(
+            pygame.Rect(
+                snake.get_pos_list()[width].x, snake.get_pos_list()[width].y,
+                                          rect_size, rect_size
+            )
 
-    apple = pygame.draw.circle(screen, "red", (food.get_curr_pos().x, food.get_curr_pos().y), food_size)
+        )
 
-    # collision functions
-    apple_collision(snakes_squares, apple, snake, food)
+
+        pygame.draw.rect(
+            screen, "green", rect=(
+                snakes_squares[width]
+            )
+        )
+
+    apple = pygame.draw.circle(
+        screen, "red", (
+            food.get_curr_pos().x, food.get_curr_pos().y
+        ), food_size
+    )
+    apple_collision(
+        snakes_squares, apple, snake, food
+    )
     snake_collision(snakes_squares, snake)
-    # renders display, end of function
+    #DMRE1 helped us get this right after 3 hours of failure (ChatGPT)
+    head_centered = adams_snake_face.get_rect(center=(
+        snake.get_pos_list()[0].x + 10,
+        snake.get_pos_list()[0].y + 10
+    ))
+    screen.blit(adams_snake_face, head_centered)
+
+
+# renders display, end of function
+
     pygame.display.flip()
+    pygame.display.update()
 
 
 def key_input(snake):
@@ -128,6 +198,8 @@ def key_input(snake):
 
 def apple_collision(snake_rects, apple_circle, snake, food):
     if snake_rects[0].collidepoint(food.get_curr_pos()):
+        # this is where to add the sfx upon collision
+
         snake.increase_size()
         forbidden_x = snake.get_x_coordinates()
         forbidden_y = snake.get_y_coordinates()
