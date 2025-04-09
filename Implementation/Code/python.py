@@ -18,22 +18,23 @@ class Python:
     __pos_list = [None]
     __previous_position = None
     # initializes class once created
+    __next_direction = "ERR"
 
-    def __init__(self):
+    def __init__(self, previous_score):
         self.set_length(1)
         self.set_curr_direction("none")
         self.set_curr_score(0)
         self.set_pos_list([pygame.math.Vector2(480, 360), pygame.math.Vector2(500, 360)])
         self.set_head_pos(pygame.math.Vector2(480, 360))
-        self.set_previous_score(0)
-
+        self.set_previous_score(previous_score)
+        self.set_next_direction("none")
     # helpers
 
     # changes position of head depending on the state of __curr_direction
     def change_head_pos(self):
-        # adds image to head
 
-
+        # set curr direction to next direction
+        self.set_curr_direction(self.get_next_direction())
         # stores previous position that is used for adding parts to the snakes body
         self.set_previous_position(pygame.math.Vector2(self.get_pos_list()[-1]))
         match self.get_curr_direction():
@@ -115,6 +116,9 @@ class Python:
     def get_previous_position(self):
         return self.__previous_position
 
+    def get_next_direction(self):
+        return self.__next_direction
+
     # setters
     def set_length(self, length):
         self.__length = length
@@ -136,6 +140,9 @@ class Python:
 
     def set_previous_position(self, previous_position):
         self.__previous_position = previous_position
+
+    def set_next_direction(self, next_direction):
+        self.__next_direction = next_direction
 
     # __str__
     def __str__(self):

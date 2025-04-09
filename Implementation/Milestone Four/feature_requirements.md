@@ -1,4 +1,4 @@
-# Milestone Three Requirements
+# Milestone Four Requirements
 ## Functional Requirements
 - Snake has multiple body parts
 - Snake grows when it collects an apple
