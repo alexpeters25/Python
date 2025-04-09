@@ -82,14 +82,11 @@ def render(screen, snake, food, adams_snake_face):
     # This fills the background, so the previous image does not stay on screen
     screen.fill(color=(76, 179, 252))
 
-
-
-
     # Screen dimensions currently 720x720
     x = 720
     y = 720
     # playing field
-    ####snake face added
+
     face = adams_snake_face.get_rect(center=(50,50))
     playing_field = pygame.Rect(60, 60, x-120, y-120)
     field_border = pygame.Rect(55, 55, x-110, y-110)
