@@ -26,8 +26,9 @@ class Food:
             rand_position_y = random.randrange(start=70, stop=(int(screen_size_lst[1])-70), step=20)
             # this checks to see if rand x and rand y are both in forbidden positions
             for index in range(len(forbidden_x)):
-                if rand_position_x == forbidden_x[index] and rand_position_y == forbidden_y[index]:
+                if rand_position_x - 10 == forbidden_x[index] and rand_position_y - 10 == forbidden_y[index]:
                     randomizing.append(True)
+
         self.set_curr_pos(pygame.math.Vector2(rand_position_x, rand_position_y))
 
     # getters
