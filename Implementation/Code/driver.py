@@ -27,6 +27,12 @@ def main():
     #### MUSIC DOENST WORK RIGHT SOUNDS LIKE ASSS
     pygame.mixer.music.play(-1, 0.0)
 
+    # adding sfx for collisions w/ food, barrier/body
+    pygame.mixer.music.load("ouch.wav")
+    pygame.mixer.music.load("yummy.wav")
+
+    
+
     # This loop runs through different functions until the user closes the window
     while running:
         # when the game starts audio file of adam saying "hello everybowdy" plays
