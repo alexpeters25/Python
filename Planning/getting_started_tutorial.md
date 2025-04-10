@@ -12,11 +12,9 @@ Make sure you have the following installed on your system:
 
 ## How to play
 - Use WASD or Arrow Keys to move
-- Eat items like:
-  - Homework
-  - Tests
-  - Apples
-  - Lines of code
+- Eat apples
+  - increases score
+  - increases size 
 - Avoid running into:
   - Yourself
   - The walls
