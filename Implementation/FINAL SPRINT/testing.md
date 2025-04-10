@@ -1,0 +1,14 @@
+# Program Testing
+- Test: Press each arrow key and WASD key and note how snake responds 
+  - Result: Snake changes to the correct direction for each key
+- Test: While moving and changing directions note if the snakes body moves as intended
+  - Result: Snake body follows head
+- Test: Intionally run into border and body of snake
+  - Result: for each the game will reset to it's initial state and update previous score
+- Test: Collect apple
+  - Result: Score increments and snake grows by one, apple respawns randomly
+- Test: Place print statement into code that prevents apple from spawning on snake, collect apples until print statement activates
+  - Result: Program re-randomizes apple position and apple does not spawn on player
+- Test: Attempt to turn backwards using arrow keys and WASD keys, and by pressing two inputs quickly
+  - Result: Snake does nothing
+  - Result: Snake turns 90 degrees twice
