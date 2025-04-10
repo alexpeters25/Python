@@ -29,7 +29,6 @@ def main():
     # after time delay music starts
     pygame.mixer.music.load("Sounds/gameSong.wav")
     # play the music, args: how many times it repeats, where to start playing
-    #### MUSIC DOENST WORK RIGHT SOUNDS LIKE ASSS
     pygame.mixer.music.play(-1, 0.0)
 
     # This loop runs through different functions until the user closes the window
