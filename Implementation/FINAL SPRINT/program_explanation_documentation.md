@@ -1,0 +1,83 @@
+# Program Documenation
+## [driver.py](https://github.com/alexpeters25/Python/blob/main/Implementation/FINAL%20SPRINT/Code/driver.py)
+- [main()](https://github.com/alexpeters25/Python/blob/main/Implementation/FINAL%20SPRINT/Images/main_final.png)
+  - Calls initialize
+  - Establishes images as variables
+  - Leads and plays music
+  - [Main loop](https://github.com/alexpeters25/Python/blob/main/Implementation/FINAL%20SPRINT/Images/main_loop_final.png)
+    - Sets framerate
+    - Calls render()
+    - Calls border()
+    - Checks fail condition
+    - Takes user input
+    - Timer
+      - Calls change_head_pos() 100 ms
+    - Check if window needs to close
+- [initialize()](https://github.com/alexpeters25/Python/blob/main/Implementation/FINAL%20SPRINT/Images/initialize_final.png)
+  - Intializes Python, pygame, display, and a clock
+- render()
+  - Accepted inputs include
+    - pygame.display() var
+    - Snake object
+    - Food object
+    - Adams face image
+    - Apple image
+    - Icon image
+  - [Creates visual for border, grid, and creates an icon from an image](https://github.com/alexpeters25/Python/blob/main/Implementation/FINAL%20SPRINT/Images/background_final.png)
+  - [Updates score on window border](https://github.com/alexpeters25/Python/blob/main/Implementation/FINAL%20SPRINT/Images/score_final.png)
+  - [Renders snake and apple](https://github.com/alexpeters25/Python/blob/main/Implementation/FINAL%20SPRINT/Images/snakeapple_render_final.png)
+    - Creates rects for snake and places them into a list
+    - Creates circle for apple which is placed into a variable
+  - Apple and snake collision functions are called
+  - [Images are placed over apple and snake head](https://github.com/alexpeters25/Python/blob/main/Implementation/FINAL%20SPRINT/Images/images_final.png)
+  - Screen is rendered using pygame.display.flip()
+- [key_input()](https://github.com/alexpeters25/Python/blob/main/Implementation/FINAL%20SPRINT/Images/keyinput_final.png)
+  - Checks current input and changes the next position of the snake if it is a valid input
+- [apple_collision()](https://github.com/alexpeters25/Python/blob/main/Implementation/FINAL%20SPRINT/Images/apple_collision_final.png)
+  - Checks if snake head is colliding with apple
+    - if it is:
+      - Snake increases in size
+      - Score is incremented
+      - Apple respawns elsewhere
+- [snake_collision()](https://github.com/alexpeters25/Python/blob/main/Implementation/FINAL%20SPRINT/Images/snake_collision_final.png)
+  - Checks if head is colliding with any point in the body
+    - If it is the loss condition is flagged (__curr_direction="stop")
+- [border()](https://github.com/alexpeters25/Python/blob/main/Implementation/FINAL%20SPRINT/Images/border_final.png)
+  - Checks if snake is outside of the border
+    - Triggers loss condition if it is
+## Python.py
+- Variables
+  - __length: tracks length of snake
+  - __curr_direction: tracks the current direction
+  - __curr_score: tracks current score
+  - __previous_score: tracks the previous score
+  - __head_pos: tracks the  of the head
+  - __pos_list: tracks the  of all body parts
+  - __previous_: tracks the previous position of the last body part
+  - __next_direction: tracks the next direction
+- Functions
+  - [change_head_pos()](https://github.com/alexpeters25/Python/blob/main/Implementation/FINAL%20SPRINT/Images/headmovement_final.png):
+    - Sets current_direction to the value of next_direction
+    - Sets previous_position
+    - Moves body accordingly with the value in curr_direction
+      - Also calls change_body_position()
+    - pos_list is updated with new head coordinates
+  - [change_body_position()](https://github.com/alexpeters25/Python/blob/main/Implementation/FINAL%20SPRINT/Images/changebodypos_final.png)
+    - Passes all coordinates in pos_list down one.
+  - [increase_size()](https://github.com/alexpeters25/Python/blob/main/Implementation/FINAL%20SPRINT/Images/increase_size.png)
+    - Creates a new part in pos_list at the position of previous_position
+    - increases value of length
+  - [get_x_coordinates()](https://github.com/alexpeters25/Python/blob/main/Implementation/FINAL%20SPRINT/Images/getx_final.png)
+    - returns x coordinates
+  - [get_y_coordinates()](https://github.com/alexpeters25/Python/blob/main/Implementation/FINAL%20SPRINT/Images/gety_final.png)
+    - returns y coordinates
+  ## food.py
+  - Variables
+    - __radius: stores radius
+    - __curr_pos: stores a Vector2 position
+  - Functions
+    - [position_change()](https://github.com/alexpeters25/Python/blob/main/Implementation/FINAL%20SPRINT/Images/positionchange_final.png)
+      - finds screen size for randomization
+      - randomly generates two coordinates
+      - coordinates are compared to x and y coordinates of snake
+        - If the apple is attempting to spawn at a forbiden coordinate then the position re-randomizes 
