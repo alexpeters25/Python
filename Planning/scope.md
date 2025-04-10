@@ -19,3 +19,4 @@
     - Lines of code
 - What is outside scope / unnecessary:
   - High score table
+  - Multiple food types with different attributes
