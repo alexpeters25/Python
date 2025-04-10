@@ -45,7 +45,7 @@
 - [border()](https://github.com/alexpeters25/Python/blob/main/Implementation/FINAL%20SPRINT/Images/border_final.png)
   - Checks if snake is outside of the border
     - Triggers loss condition if it is
-## Python.py
+## [Python.py](https://github.com/alexpeters25/Python/blob/main/Implementation/FINAL%20SPRINT/Code/python.py)
 - Variables
   - __length: tracks length of snake
   - __curr_direction: tracks the current direction
@@ -71,12 +71,12 @@
     - returns x coordinates
   - [get_y_coordinates()](https://github.com/alexpeters25/Python/blob/main/Implementation/FINAL%20SPRINT/Images/gety_final.png)
     - returns y coordinates
-  ## food.py
+  ## [food.py](https://github.com/alexpeters25/Python/blob/main/Implementation/FINAL%20SPRINT/Code/python.py)
   - Variables
     - __radius: stores radius
     - __curr_pos: stores a Vector2 position
   - Functions
-    - [position_change()](https://github.com/alexpeters25/Python/blob/main/Implementation/FINAL%20SPRINT/Images/positionchange_final.png)
+    - [position_change()](https://github.com/alexpeters25/Python/blob/main/Implementation/FINAL%20SPRINT/Code/food.py)
       - finds screen size for randomization
       - randomly generates two coordinates
       - coordinates are compared to x and y coordinates of snake
