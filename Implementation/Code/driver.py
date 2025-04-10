@@ -18,7 +18,7 @@ def main():
 
     #### trying to import the picture of our dear leader (NOT mf'in WORKING)
     adams_snake_face = pygame.image.load("Images/french_face_real.png").convert_alpha()
-    adams_snake_face = pygame.transform.scale(adams_snake_face, size=(50, 50))
+    adams_snake_face = pygame.transform.scale(adams_snake_face, size=(65, 65))
 
     apple_image = pygame.image.load("Images/pixel_apple.png").convert_alpha()
     apple_image = pygame.transform.scale(apple_image, size=(35, 35))
