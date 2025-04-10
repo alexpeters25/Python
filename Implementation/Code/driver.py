@@ -20,6 +20,9 @@ def main():
     adams_snake_face = pygame.image.load("Images/french_face_real.png").convert_alpha()
     adams_snake_face = pygame.transform.scale(adams_snake_face, size=(50, 50))
 
+    apple_image = pygame.image.load("Images/pixel_apple.png").convert_alpha()
+    apple_image = pygame.transform.scale(apple_image, size=(35, 35))
+
     #### trying to import the song before the while running part
     # after time delay music starts
     pygame.mixer.music.load("Sounds/gameSong.wav")
@@ -34,7 +37,7 @@ def main():
         # sets frame rate
         clock.tick(60)
         # calls render function to render screen
-        render(screen, snake, food, adams_snake_face)
+        render(screen, snake, food, adams_snake_face, apple_image)
      
         # border function set up where if the snake head touches it, the game quits running
         border(snake)
@@ -68,7 +71,7 @@ def initialize():
     return display, clock, snake, food
 
 
-def render(screen, snake, food, adams_snake_face):
+def render(screen, snake, food, adams_snake_face, apple_image):
     # var for rectangle size
     rect_size = 20
     # var for food size, always proportional to rect_size
@@ -157,6 +160,9 @@ def render(screen, snake, food, adams_snake_face):
         snake.get_pos_list()[0].y + 10
     ))
     screen.blit(adams_snake_face, head_centered)
+
+    apple_centered = apple_image.get_rect(center=food.get_curr_pos())
+    screen.blit(apple_image, apple_centered)
 
 
 # renders display, end of function
