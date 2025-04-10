@@ -22,6 +22,9 @@ def main():
     apple_image = pygame.image.load("Images/pixel_apple.png").convert_alpha()
     apple_image = pygame.transform.scale(apple_image, size=(35, 35))
 
+    title_text = pygame.image.load("Images/python_text.png").convert_alpha()
+    title_text = pygame.transform.scale(title_text, size=(349/2, 126/2))
+
     #### trying to import the song before the while running part
     # after time delay music starts
     pygame.mixer.music.load("Sounds/gameSong.wav")
@@ -36,7 +39,7 @@ def main():
         # sets frame rate
         clock.tick(60)
         # calls render function to render screen
-        render(screen, snake, food, adams_snake_face, apple_image)
+        render(screen, snake, food, adams_snake_face, apple_image, title_text)
      
         # border function set up where if the snake head touches it, the game quits running
         border(snake)
@@ -70,7 +73,7 @@ def initialize():
     return display, clock, snake, food
 
 
-def render(screen, snake, food, adams_snake_face, apple_image):
+def render(screen, snake, food, adams_snake_face, apple_image, title_text):
     # var for rectangle size
     rect_size = 20
     # var for food size, always proportional to rect_size
@@ -90,6 +93,8 @@ def render(screen, snake, food, adams_snake_face, apple_image):
     field_border = pygame.Rect(55, 55, x-110, y-110)
     pygame.draw.rect(screen, (0, 77, 134), rect=playing_field)
     pygame.draw.rect(screen, (46, 26, 10), rect=field_border, width=5)
+
+    screen.blit(title_text, ((x/2)-(349/4), -1))
 
     # field grid
     # Create each darker square in grid
@@ -158,6 +163,7 @@ def render(screen, snake, food, adams_snake_face, apple_image):
         snake.get_pos_list()[0].x + 10,
         snake.get_pos_list()[0].y + 10
     ))
+
     screen.blit(adams_snake_face, head_centered)
 
     apple_centered = apple_image.get_rect(center=food.get_curr_pos())
