@@ -12,4 +12,4 @@
   - Test: manually increase score to see if it affects the programs function
     - [Result: When the score grows too large it simply trails off the window with a ...](https://github.com/alexpeters25/Python/blob/main/Implementation/Milestone%203/Images/Screenshot%202025-04-02%20134212.png) and program continues to function as intended
   - Test: Play game and note any oddities that do not work as intended
-    - Result: It's too difficult for the snake to glide on the edge of the border ([example](https://github.com/alexpeters25/Python/blob/main/Implementation/Milestone%203/Images/Screenshot%202025-04-02%20134704.png), fixed by increasing valid play area by one pixel
+    - Result: It's too difficult for the snake to glide on the edge of the border ([example](https://github.com/alexpeters25/Python/blob/main/Implementation/Milestone%203/Images/Screenshot%202025-04-02%20134704.png), fixed by increasing valid play area by one pixel)
