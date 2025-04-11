@@ -17,7 +17,7 @@
 
 ## [Sprint Two](https://github.com/alexpeters25/Python/tree/main/Implementation/Sprint%202)
 1. [Milestone Two Requirements](https://github.com/alexpeters25/Python/blob/76a3b4e390f86d89efe64a91683875576104dc44/Implementation/Sprint%202/Requirements.md)
-2. [Milestone Two Testing Results](https://github.com/alexpeters25/Python/blob/76a3b4e390f86d89efe64a91683875576104dc44/Implementation/Sprint%202/milestone-two-testing-results.md)
+2. [Milestone Two Testing Results](https://github.com/alexpeters25/Python/blob/main/Implementation/Sprint%202/milestone-two-testing-results.md)
 3. [Program Documentation](https://github.com/alexpeters25/Python/blob/76a3b4e390f86d89efe64a91683875576104dc44/Implementation/Sprint%202/program_documentation.md)
 
 ## [Sprint Three](https://github.com/alexpeters25/Python/tree/main/Implementation/Sprint%203)
